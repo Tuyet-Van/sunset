@@ -1,0 +1,251 @@
+// css header
+header {
+    width: 100%;
+    height: var(--height-header);
+    background-color: $bg-cl;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    @include transition(background-color $t);
+    &.active {
+        background-color: $blue-cl;
+    }
+    .container-fluid {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .overlay {
+            display: none;
+        }
+        .btnmenu {
+            display: none;
+            width: 20px;
+            height: 16px;
+            position: relative;
+            z-index: 300;
+            cursor: pointer;
+            @include transition($t);
+
+            span {
+                width: 100%;
+                height: 2px;
+                background-color: $white-cl;
+                position: absolute;
+                top: 50%;
+                @include transform(translateY(-50%));
+                @include transition($t);
+            }
+            &::after,
+            &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                display: block;
+                background-color: $white-cl;
+                @include transform(rotate(0deg) translateY(0));
+                @include transition($t);
+            }
+            &::after {
+                bottom: 0;
+            }
+            &.--off {
+                @keyframes top_move-2 {
+                    0% {
+                        top: 50%;
+                        @include transform(rotate(45deg) translateY(-50%));
+                    }
+                    50% {
+                        top: 50%;
+                        @include transform(rotate(0deg) translateY(-50%));
+                    }
+                    100% {
+                        top: 0;
+                        @include transform(rotate(0deg) translateY(0));
+                    }
+                }
+                @keyframes bottom_move-2 {
+                    0% {
+                        bottom: 50%;
+                        @include transform(rotate(135deg) translateY(-50%));
+                    }
+                    50% {
+                        bottom: 50%;
+                        @include transform(rotate(0deg) translateY(50%));
+                    }
+                    100% {
+                        bottom: 0;
+                        @include transform(rotate(0deg) translateY(0));
+                    }
+                }
+                @keyframes mid_move-2 {
+                    0% {
+                        @include transform(translateY(-50%) scaleX(0));
+                    }
+                    50% {
+                        @include transform(translateY(-50%) scaleX(0));
+                    }
+                    100% {
+                        @include transform(translateY(-50%) scaleX(1));
+                    }
+                }
+                &::before {
+                    @include animation(top_move-2 0.7s ease 0.4s backwards);
+                }
+                &::after {
+                    @include animation(bottom_move-2 0.7s ease 0.4s backwards);
+                }
+                span {
+                    @include animation(mid_move-2 0.7s ease 0.4s backwards);
+                }
+            }
+            &.--on {
+                @keyframes top_move-1 {
+                    0% {
+                        top: 0;
+                        @include transform(rotate(0deg) translateY(0));
+                    }
+                    50% {
+                        top: 50%;
+                        @include transform(rotate(0deg) translateY(-50%));
+                    }
+                    100% {
+                        top: 50%;
+                        @include transform(rotate(45deg) translateY(-50%));
+                    }
+                }
+                @keyframes bottom_move-1 {
+                    0% {
+                        bottom: 0;
+                        @include transform(rotate(0deg) translateY(0));
+                    }
+                    50% {
+                        bottom: 50%;
+                        @include transform(rotate(0deg) translateY(50%));
+                    }
+                    100% {
+                        bottom: 50%;
+                        @include transform(rotate(135deg) translateY(-50%));
+                    }
+                }
+                @keyframes mid_move-1 {
+                    50% {
+                        @include transform(translateY(-50%) scaleX(0));
+                    }
+                    100% {
+                        @include transform(translateY(-50%) scaleX(0));
+                    }
+                }
+                &::before {
+                    @include animation(top_move-1 0.7s ease 0.4s forwards);
+                }
+                &::after {
+                    @include animation(bottom_move-1 0.7s ease 0.4s forwards);
+                }
+                span {
+                    @include animation(mid_move-1 0.7s ease 0.4s forwards);
+                }
+            }
+        }
+        .logo {
+            margin-left: 30px;
+            max-height: 44px;
+            .hidden {
+                display: none;
+            }
+        }
+        nav {
+            .menu__list {
+                .logo__mobile {
+                    display: none;
+                }
+                .menu {
+                    height: 100%;
+                    display: flex;
+                    @include mid;
+                    li {
+                        height: 100%;
+                        a {
+                            height: 100%;
+                            @include mid(true);
+                            @include text(var(--header-fs), owr, var(--header-lh), $white-cl, uppercase);
+                            padding: 0 12px;
+                            @include transition(color $t);
+
+                            .arrowdown {
+                                width: 12px;
+                                margin-left: 10px;
+                                path {
+                                    @include transition($t);
+                                }
+                                &.active {
+                                    @include transform(rotate(-180deg));
+                                }
+                                @include transition($t);
+                            }
+                            &:hover,
+                            &.active {
+                                color: $yellow-cl;
+                                .arrowdown {
+                                    path {
+                                        stroke: $yellow-cl;
+                                    }
+                                }
+                            }
+                        }
+                        .submenu {
+                            @include visible(0);
+                            position: absolute;
+                            background: $bg-cl;
+                            padding: 15px;
+                            border: 1px solid $yellow-cl;
+                            top: 100%;
+                            @include transition($t);
+                            li {
+                                width: 100%;
+                                a {
+                                    width: 100%;
+                                    justify-content: flex-start;
+                                    align-items: flex-start;
+                                    padding: 10px 12px;
+                                }
+                            }
+                            &.active {
+                                @include visible(1);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .btn-inner {
+                display: none;
+            }
+        }
+        .right {
+            display: inline-flex;
+            height: 100%;
+            @include mid(true);
+            .lang {
+                @include mid(true);
+                height: 100%;
+                position: relative;
+                @include text(var(--header-fs), owr, var(--header-lh), $white-cl, uppercase);
+                @include transition($t);
+                &:hover {
+                    color: $yellow-cl;
+                }
+            }
+        }
+        @include xxs {
+            .logo {
+                max-height: 40px;
+                img {
+                    width: 90%;
+                }
+            }
+        }
+    }
+}

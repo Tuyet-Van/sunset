@@ -1,0 +1,105 @@
+.libpage {
+    .pageheader {
+        background-image: url(../img/bg-library.jpg);
+    }
+    .lib {
+        text-align: center;
+        &__tabs {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            &::after {
+                content: "";
+                display: block;
+                background: $yellow-cl;
+                height: 1px;
+                width: 310px;
+                position: absolute;
+                bottom: 1px;
+            }
+            &-item {
+                @include text(var(--body14-fs), owl, var(--body14-lh), #909090, uppercase);
+                cursor: pointer;
+                padding-bottom: 12px;
+                @include transition($t);
+                border-bottom: 3px solid transparent;
+
+                &.active {
+                    color: $white-cl;
+                    border-bottom: 3px solid $yellow-cl;
+                    @include transition($t);
+                }
+                &:hover {
+                    color: $white-cl;
+                }
+                &:not(:last-child) {
+                    margin-right: 24px;
+                }
+            }
+        }
+        &__wrap {
+            margin-top: 48px;
+            margin-bottom: 80px;
+        }
+        &__list {
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            position: relative;
+
+            &-item {
+                position: relative;
+                overflow: hidden;
+                @include transition($t);
+                height: 0;
+                padding-bottom: 117.1875%;
+
+                img {
+                    @include midimg(100%);
+                    z-index: 5;
+                }
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba($color: #000000, $alpha: 0.5);
+                    background-image: url(../img/iconsearch.svg);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    @include transition($t);
+                    @include visible(0);
+                }
+                &:hover {
+                    &::after {
+                        @include visible(1);
+                    }
+                }
+            }
+
+            &.active {
+                display: grid;
+                @include transition($t);
+            }
+        }
+
+        @include sm {
+            &__wrap {
+                margin-top: 40px;
+                margin-bottom: 50px;
+            }
+            &__list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @include xxs {
+            &__list {
+                gap: 12px;
+            }
+        }
+    }
+}

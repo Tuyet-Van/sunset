@@ -1,0 +1,41 @@
+.destinationdetail-page {
+    .pageheader {
+        background-image: url(../img/bg-destinationdetail.jpg);
+    }
+    .maincontent {
+        .container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: 24px;
+        }
+        .article {
+            grid-column: 3 / 11;
+            .title {
+                margin-bottom: 23px;
+            }
+            img {
+                margin-top: 48px;
+                margin-bottom: 73px;
+            }
+        }
+        .sharepost {
+            grid-column: 3 / 11;
+        }
+
+        @include sm {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .article {
+                grid-column: auto;
+                img {
+                    margin: 40px 0;
+                }
+            }
+            .sharepost,
+            .diffservice {
+                grid-column: auto;
+            }
+        }
+    }
+}

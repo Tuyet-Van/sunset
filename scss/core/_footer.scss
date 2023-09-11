@@ -1,0 +1,135 @@
+// css footer
+footer {
+    position: relative;
+    .ft {
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        &__title {
+            margin-bottom: 24px;
+        }
+        &__left {
+            &-item {
+                color: $white-cl;
+                display: flex;
+                align-items: center;
+                span {
+                    padding-left: 18px;
+                    @include transition($t);
+                }
+            }
+            &-item:not(:last-child) {
+                margin-bottom: 14px;
+            }
+            a.ft__left-item:hover span {
+                color: $yellow-cl;
+            }
+        }
+        &__center {
+            max-width: 384px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            @include transform(translateX(-50%));
+            &-text {
+                @include text(var(--h4-fs), ci, var(--h4-lh), $white-cl, initial);
+                margin-bottom: 30px;
+                margin-top: 23px;
+            }
+        }
+        &__right {
+            text-align: right;
+            &-item {
+                span {
+                    color: $yellow-cl;
+                }
+            }
+            &-item:not(:last-child) {
+                margin-bottom: 15px;
+            }
+        }
+    }
+    .fb {
+        height: 80px;
+        text-align: center;
+        @include mid(flex);
+    }
+    @include md {
+        .ft {
+            &__center {
+                max-width: 284px;
+            }
+        }
+    }
+    @include sm {
+        .ft {
+            .container {
+                flex-direction: column;
+            }
+            &__left {
+                &-item:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+            }
+            &__center {
+                max-width: initial;
+                position: initial;
+                @include transform(translateX(0));
+                text-align: left;
+                margin: 40px 0;
+                &-icon {
+                    justify-content: flex-start;
+                }
+                &-text {
+                    margin-bottom: 20px;
+                    margin-top: 13px;
+                }
+            }
+            &__right {
+                text-align: left;
+            }
+        }
+        .fb {
+            height: 70px;
+        }
+    }
+    @include xs {
+        .ft {
+            &__title {
+                margin-bottom: 20px;
+            }
+            &__left {
+                &-item:not(:last-child) {
+                    margin-bottom: 8px;
+                }
+            }
+            &__center {
+                margin: 30px 0;
+
+                &-text {
+                    font-size: 2rem;
+                    margin-bottom: 20px;
+                    margin-top: 13px;
+                }
+            }
+            &__right {
+                &-item:not(:last-child) {
+                    margin-bottom: 9px;
+                }
+            }
+        }
+        .fb {
+            p {
+                font-size: 1.4rem;
+            }
+        }
+    }
+    @include xxs {
+        .fb {
+            p {
+                line-height: 150%;
+            }
+        }
+    }
+}

@@ -1,0 +1,94 @@
+.contactpage {
+    .pageheader {
+        background-image: url(../img/bg-contact.jpg);
+    }
+    .info {
+        .container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: 24px;
+        }
+        .form__box {
+            grid-column: 1/7;
+        }
+        &__content {
+            grid-column: 8/13;
+            .textbox {
+                margin-top: -5px;
+            }
+            &-text {
+                margin-top: 21px;
+            }
+            &-texticon {
+                display: flex;
+                flex-direction: column;
+                margin-top: 10px;
+                .item {
+                    display: inline-flex;
+                    align-items: center;
+                    margin-top: 5px;
+                    img {
+                        margin-right: 35px;
+                    }
+                    .text {
+                        p {
+                            @include text(var(--h4-fs), owl, var(--h4-lh), $white-cl, initial);
+                        }
+                    }
+                }
+            }
+            .social-list {
+                margin-top: 13px;
+                gap: 16px;
+                li {
+                    a {
+                        background-color: $yellow-cl;
+                        border: none;
+                        @include transition($t);
+                        &:hover {
+                            border: 1px solid $white-cl;
+                            background: transparent;
+                        }
+                    }
+                }
+            }
+        }
+        @include sm {
+            .container {
+                grid-template-rows: repeat(2, auto);
+            }
+            .form__box {
+                grid-column: 1/13;
+                grid-row: 2/3;
+            }
+            &__content {
+                grid-column: 1/13;
+                grid-row: 1/2;
+                margin-bottom: 50px;
+            }
+        }
+    }
+    .map {
+        height: 410px;
+        position: relative;
+        .container-fluid {
+            height: calc(100% + 58px);
+        }
+        iframe {
+            position: relative;
+            z-index: 10;
+        }
+        @include sm {
+            height: 350px;
+        }
+        @include xs {
+            height: 300px;
+            .container-fluid {
+                height: calc(100% + 40px);
+            }
+        }
+        @include xxs {
+            height: 250px;
+        }
+    }
+}

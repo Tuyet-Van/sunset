@@ -1,0 +1,42 @@
+.servicedetail-page {
+    .pageheader {
+        background-image: url(../img/bg-detailservice.jpg);
+    }
+    .maincontent {
+        .container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: 24px;
+        }
+        .article {
+            grid-column: 3 / 11;
+            .title {
+                margin-bottom: 22px;
+            }
+            img {
+                margin-top: 46px;
+                margin-bottom: 74px;
+            }
+        }
+        .form__box,
+        .sharepost {
+            grid-column: 3 / 11;
+        }
+        @include sm {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .article {
+                grid-column: auto;
+                img {
+                    margin: 40px 0;
+                }
+            }
+            .form__box,
+            .sharepost,
+            .diffservice {
+                grid-column: auto;
+            }
+        }
+    }
+}

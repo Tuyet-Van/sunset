@@ -1,0 +1,126 @@
+@-ms-viewport {
+    width: device-width;
+}
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%; // => 10px = 1rem
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    max-width: $container-max-width;
+    margin: auto;
+    @include text(var(--body16-fs), mr, var(--body16-lh), $white-cl, none); // tuỳ chỉnh
+    background: $bg-cl;
+    position: relative;
+
+    .container-fluid {
+        position: relative;
+        width: 100%;
+        padding-right: var(--gap);
+        padding-left: var(--gap);
+        margin-right: auto;
+        margin-left: auto;
+        @include xs {
+            padding-right: calc(var(--gap) / 2);
+            padding-left: calc(var(--gap) / 2);
+        }
+    }
+    .container {
+        position: relative;
+        width: 100%;
+        padding-right: calc(var(--gap) / 2);
+        padding-left: calc(var(--gap) / 2);
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .pd {
+        padding: var(--pd-section) 0;
+    }
+    .pdB {
+        padding-bottom: var(--pd-section);
+    }
+    .pdT {
+        padding-top: var(--pd-section);
+    }
+    .blue-bg {
+        background-color: $blue-cl;
+    }
+    @media (min-width: $xxs-min) {
+        //576
+        .container {
+            max-width: 540px;
+        }
+    }
+    @media (min-width: $xs-min) {
+        //768
+        .container {
+            max-width: 720px;
+        }
+    }
+    @media (min-width: $sm-min) {
+        //992
+        .container {
+            max-width: 960px;
+        }
+    }
+    @media (min-width: $md-min) {
+        //1200
+        .container {
+            max-width: $container-width;
+        }
+    }
+
+    .mainwrapper {
+        width: 100%;
+        margin: auto;
+        @include visible;
+        padding-top: var(--height-header);
+        &.homepage {
+            padding-top: 0;
+        }
+    }
+    @include lg {
+        //1599
+        // CSS responsive large desktop
+    }
+    @include md {
+        //1199
+        // CSS responsive desktop
+    }
+    @include sm {
+        //991
+        // CSS responsive tablet
+    }
+    @include xs {
+        //767
+        // CSS responsive mobile
+    }
+    @include xxs {
+        //575
+        // CSS responsive small mobile
+    }
+}
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba($color: #fff, $alpha: 0.7);
+    border-radius: 5px;
+    &:hover {
+        background-color: rgba($color: #fff, $alpha: 1);
+    }
+}

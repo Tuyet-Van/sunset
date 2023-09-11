@@ -1,0 +1,32 @@
+.blogpage {
+    .pageheader {
+        background-image: url(../img/bg-blog.jpg);
+    }
+    .scblog {
+        text-align: center;
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            &-item {
+                width: 100%;
+            }
+        }
+        .btn {
+            margin-top: 63px;
+        }
+        @include md {
+            &__list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @include xs {
+            &__list {
+                grid-template-columns: 1fr;
+            }
+            .btn {
+                margin-top: 50px;
+            }
+        }
+    }
+}

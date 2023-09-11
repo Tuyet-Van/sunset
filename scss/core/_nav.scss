@@ -1,0 +1,120 @@
+// css navigator (Menu)
+@include maxW(1246px) {
+    header {
+        .container-fluid {
+            .overlay {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 800;
+                @include visible(0);
+                @include transition($t);
+                &.active {
+                    @include visible(1);
+                }
+            }
+            .btnmenu {
+                display: block;
+            }
+            .logo {
+                margin-left: 0;
+                @include mid;
+            }
+            nav {
+                @include transform(translateX(-100%));
+                overflow: hidden;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 900;
+                height: 100vh;
+                width: 400px;
+                max-width: calc(100% - 50px);
+                background-color: $blue-cl;
+                @include transition($t);
+                .menu__list {
+                    padding: 30px;
+                    height: 100%;
+                    overflow-y: scroll;
+                    &::-webkit-scrollbar {
+                        background-color: initial;
+                        width: 3px;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                        background-color: rgba($color: #fff, $alpha: 0.5);
+                    }
+                    .logo__mobile {
+                        display: block;
+                        position: relative;
+                        z-index: 900;
+                        max-height: 44px;
+                    }
+                    .menu {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        width: 100%;
+                        height: auto;
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        margin-top: 20px;
+                        @include transform(translate(0, 0));
+                        li {
+                            height: auto;
+                            width: 100%;
+                            a {
+                                padding: 10px 0;
+                                width: 100%;
+                                justify-content: flex-start;
+                            }
+                            .submenu {
+                                @include visible(0);
+                                border: none;
+                                background: none;
+                                padding: 0;
+                                position: relative;
+                                top: auto;
+                                max-height: 0;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+                }
+                .btn-inner {
+                    position: absolute;
+                    top: 5px;
+                    left: 101%;
+                    width: 40px;
+                    height: 40px;
+                    background-color: #222d3a;
+                    border-radius: 5px;
+                    @include mid(true);
+                }
+                &.active {
+                    @include transform(translateX(0%));
+                    overflow: visible;
+                    @include transition($t);
+                }
+            }
+        }
+    }
+}
+
+@include xxs {
+    .container-fluid {
+        nav {
+            .menu__list {
+                position: relative;
+                .btn-order {
+                    padding: 10px 53px;
+                    margin-top: 20px;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}

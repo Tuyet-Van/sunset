@@ -1,0 +1,29 @@
+.eventpage {
+    .pageheader {
+        background-image: url(../img/bg-event.jpg);
+    }
+    .event {
+        text-align: center;
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            &-item {
+                width: 100%;
+            }
+        }
+        .btn {
+            margin-top: 55px;
+        }
+        @include md {
+            &__list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @include xs {
+            &__list {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}

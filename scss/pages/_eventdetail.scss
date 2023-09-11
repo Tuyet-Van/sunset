@@ -1,0 +1,41 @@
+.eventdetail-page {
+    .pageheader {
+        background-image: url(../img/bg-eventdetail.jpg);
+    }
+    .maincontent {
+        .article {
+            .slideimg {
+                --width-control: 52.8px;
+                margin-top: 64px;
+                height: 0;
+                padding-bottom: 55.55%;
+                position: relative;
+                overflow: hidden;
+                &__controls {
+                    .control {
+                        width: var(--width-control);
+                        height: var(--width-control);
+                        background: $bg-cl;
+                        position: absolute;
+                        left: calc(-1 * var(--width-control) / 2);
+                        top: 50%;
+                        @include transform(rotate(45deg));
+                        cursor: pointer;
+                        @include mid(flex);
+                        img {
+                            @include transform(rotate(-45deg));
+                            width: 10.72px;
+                            margin-top: -20px;
+                            margin-left: 20px;
+                        }
+                        &.--next {
+                            right: calc(-1 * var(--width-control) / 2);
+                            left: auto;
+                            @include transform(rotateZ(-45deg) rotateY(180deg));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

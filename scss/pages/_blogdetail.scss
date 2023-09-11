@@ -1,0 +1,20 @@
+.blogdetail-page {
+    .pageheader {
+        background-image: url(../img/bg-blogdetail.jpg);
+    }
+    .maincontent.--detailpage {
+        .articlecontent {
+            .article {
+                &__img {
+                    margin-bottom: 24px;
+                }
+                > img {
+                    margin-bottom: 78px;
+                    @include sm {
+                        margin-bottom: 50px;
+                    }
+                }
+            }
+        }
+    }
+}
